@@ -22,6 +22,7 @@ require './ci/lighttpd'
 require './ci/memcache'
 require './ci/mongo'
 require './ci/mysql'
+require './ci/network'
 require './ci/nginx'
 require './ci/pgbouncer'
 require './ci/phpfpm'
@@ -107,7 +108,7 @@ end
 
 namespace :ci do
   desc 'Run integration tests'
-  task :run, :flavor  do |_, args|
+  task :run, :flavor do |_, args|
     puts 'Assuming you are running these tests locally' unless ENV['TRAVIS']
     flavor = args[:flavor] || ENV['TRAVIS_FLAVOR'] || 'default'
     flavors = flavor.split(',')
